@@ -155,6 +155,7 @@ def process():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # display given file:
             given = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            print(given)
             with open(given, "r") as f:
                 given = f.read().splitlines()
             # display returned file
