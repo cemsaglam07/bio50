@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 from helpers import apology, login_required
 
 # Configure CS50 Library to use SQLite database
-db = SQL(os.getenv("DATABASE_URL"))
+db = SQL((os.getenv("DATABASE_URL")).replace("postgres://", "postgresql://"))
 
 # Constant variable names:
 UPLOAD_FOLDER = 'uploads'
