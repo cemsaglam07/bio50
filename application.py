@@ -150,7 +150,9 @@ def process():
             filename = secure_filename(file.filename)
             db.execute("INSERT INTO files (name, user_id) VALUES(?, ?)", filename, session.get("user_id"))
             ext_id = db.execute("SELECT MAX(id) FROM files WHERE name = ? AND user_id = ?",
-                                filename, session.get("user_id"))[0]["MAX(id)"]
+                                filename, session.get("user_id"))
+            print(ext_id)
+            ext_id = ext_id[0]["MAX(id)"]
             filename = str(filename.rsplit('.', 1)[0].lower()) + f"_({ext_id})." + str(filename.rsplit('.', 1)[1].lower())
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # display given file:
