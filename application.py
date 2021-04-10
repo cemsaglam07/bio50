@@ -39,7 +39,7 @@ Session(app)
 
 
 @app.route("/")
-@login_required
+# @login_required  # Sessions expire quickly, had to disable login/register feature
 def index():
     cards = db.execute("SELECT id, scp, title, bodytext, txtin, txtgiv, txtout, txtret FROM cards")
     for node in cards:
@@ -125,7 +125,7 @@ def valid_method(method_name):
 
 
 @app.route("/process", methods=["GET", "POST"])
-@login_required
+# @login_required  # Sessions expire quickly, had to disable login/register feature
 def process():
     """Get text file from user"""
     # User reached route via POST (as by submitting a form via POST)
